@@ -1,0 +1,21 @@
+on:
+    pull_request:
+        branches: feature/**
+
+name: "Autobuild"
+jobs:
+    build:
+        name: build
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v4
+        - uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: |
+                3.1.x
+                9.0.x
+        - run: dotnet restore
+        - run: dotnet build ./src/ReadLine -c Release
+        - run: dotnet build ./src/ReadLine.Demo -c Release
+        - run: dotnet build ./test/ReadLine.Tests -c Release
+        - run: dotnet test ./test/ReadLine.Tests -c Release
