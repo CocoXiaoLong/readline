@@ -4,17 +4,17 @@
     <AssemblyTitle>ReadLine</AssemblyTitle>
     <AssemblyDescription>A GNU-Readline like library for .NET/.NET Core</AssemblyDescription>
     <AssemblyVersion>2.0.1</AssemblyVersion>
-    <Authors>Toni Solarin-Sodara</Authors>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Toni Solarin-Sodara;CocoXiaoLong</Authors>
+    <TargetFramework>net9.0</TargetFramework>
     <DebugType>portable</DebugType>
     <AssemblyName>ReadLine</AssemblyName>
     <PackageId>ReadLine</PackageId>
     <PackageVersion>$(AssemblyVersion)</PackageVersion>
     <PackageTags>readline;gnu;console;shell;cui</PackageTags>
-    <PackageProjectUrl>https://github.com/tonerdo/readline</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/tonerdo/readline/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/cocoxiaolong/readline</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/cocoxiaolong/readline/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/tonerdo/readline</RepositoryUrl>
+    <RepositoryUrl>https://github.com/cocoxiaolong/readline</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
