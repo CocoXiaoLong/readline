@@ -46,15 +46,18 @@ namespace System
             return GetText(keyHandler);
         }
 
+        private static bool _aborted = false;
+        public static bool LastInputWasAborted => _aborted;
         private static string GetText(KeyHandler keyHandler)
         {
-            ConsoleKeyInfo keyInfo = Console.ReadKey(true);
-            while (keyInfo.Key != ConsoleKey.Enter)
-            {
-                keyHandler.Handle(keyInfo);
+            ConsoleKeyInfo keyInfo;
+            do {
                 keyInfo = Console.ReadKey(true);
-            }
+                keyHandler.Handle(keyInfo);
+                if (keyHandler.Abort) break;
+            } while (keyInfo.Key != ConsoleKey.Enter);
 
+            _aborted = keyHandler.Abort;
             Console.WriteLine();
             return keyHandler.Text;
         }

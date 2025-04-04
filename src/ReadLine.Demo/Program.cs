@@ -16,6 +16,8 @@ namespace ConsoleApplication
             ReadLine.AutoCompletionHandler = new AutoCompletionHandler();
 
             string input = ReadLine.Read("(prompt)> ");
+            if (ReadLine.LastInputWasAborted)
+                System.Console.WriteLine("Input was aborted");
             Console.WriteLine(input);
 
             input = ReadLine.ReadPassword("Enter Password> ");

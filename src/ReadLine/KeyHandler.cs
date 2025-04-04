@@ -152,7 +152,7 @@ namespace Internal.ReadLine
         {
             // local helper functions
             bool almostEndOfLine() => (_cursorLimit - _cursorPos) == 1;
-            int incrementIf(Func<bool> expression, int index) =>  expression() ? index + 1 : index;
+            int incrementIf(Func<bool> expression, int index) => expression() ? index + 1 : index;
             int decrementIf(Func<bool> expression, int index) => expression() ? index - 1 : index;
 
             if (IsStartOfLine()) { return; }
@@ -246,6 +246,8 @@ namespace Internal.ReadLine
             }
         }
 
+        public bool Abort { get; private set; } = false;
+
         public KeyHandler(IConsole console, List<string> history, IAutoCompleteHandler autoCompleteHandler)
         {
             Console2 = console;
@@ -273,6 +275,7 @@ namespace Internal.ReadLine
             _keyActions["ControlP"] = PrevHistory;
             _keyActions["DownArrow"] = NextHistory;
             _keyActions["ControlN"] = NextHistory;
+            _keyActions["ControlC"] = ControlCAbort;
             _keyActions["ControlU"] = () =>
             {
                 while (!IsStartOfLine())
@@ -325,6 +328,11 @@ namespace Internal.ReadLine
                     PreviousAutoComplete();
                 }
             };
+        }
+
+        public void ControlCAbort()
+        {
+            Abort = true;
         }
 
         public void Handle(ConsoleKeyInfo keyInfo)
